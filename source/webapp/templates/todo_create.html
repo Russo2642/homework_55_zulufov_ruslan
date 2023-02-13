@@ -3,6 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>ToDo Create</title>
+    <style>
+      * {
+        font-family: sans-serif;
+        color: #000;
+      }
+      .container {
+        max-width: 1000px;
+        margin: 50px auto;
+      }
+      h1 {
+        font-size: 36px;
+      }
+      .form {
+        box-shadow: 0px 0px 30px 0px gray;
+        padding: 50px;
+        border-radius: 35px;
+      }
+      .form_row {
+        margin-bottom: 30px;
+        margin-top: 30px;
+        box-shadow: 0px 0px 10px 0px gray;
+        padding: 25px;
+        border-radius: 35px;
+        display: flex;
+        align-items: center;
+      }
+      input {
+        width: 400px;
+        height: 30px;
+        border-radius: 30px;
+        border-color: rgb(188, 188, 188);
+        outline: none;
+      }
+      label {
+        width: 100px;
+        display: block;
+      }
+      select {
+        width: 400px;
+        height: 30px;
+        border-radius: 30px;
+        border-color: rgb(188, 188, 188);
+      }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -19,21 +63,21 @@
         <div class="form_row">
           <label for="status">
             Status
-            <select name="status" id="status">
-              <option value="new">New</option>
-              <option value="process">In process</option>
-              <option value="done">Done</option>
-            </select>
           </label>
+          <select name="status" id="status">
+            <option value="new">New</option>
+            <option value="process">In process</option>
+            <option value="done">Done</option>
+          </select>
         </div>
         <div class="form_row">
-          <label for="completion_at">
+          <label for="deadline">
             Deadline
           </label>
-          <input type="text" name="completion_at" id="completion_at" placeholder="use 'yyyy-mm-dd' format">
+          <input type="text" name="deadline" id="deadline" placeholder="use 'yyyy-mm-dd' format">
         </div>
         <div class="form_row">
-          <input type="submit">
+          <input style="display: block; margin: auto; background-color: transparent;" type="submit">
         </div>
       </form>
     </div>
