@@ -1,12 +1,14 @@
 from django.core.handlers.wsgi import WSGIRequest
 from django.shortcuts import render
+from django.views import View
 
 from webapp.models import ToDo
 
 
-def index_view(request: WSGIRequest):
-    todo = ToDo.objects.all()
-    context = {
-        'todo': todo
-    }
-    return render(request, 'index.html', context=context)
+class IndexView(View):
+    def get(self, request: WSGIRequest):
+        todo = ToDo.objects.all()
+        context = {
+            'todo': todo
+        }
+        return render(request, 'index.html', context=context)
