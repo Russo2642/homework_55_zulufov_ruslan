@@ -1,0 +1,11 @@
+[
+{
+  "model": "webapp.todo",
+  "pk": 11,
+  "fields": {
+    "description": "adqwfqwf",
+    "status": "done",
+    "completion_at": "2023-02-25"
+  }
+}
+]
