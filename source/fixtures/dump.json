@@ -1,10 +1,11 @@
 [
 {
   "model": "webapp.todo",
-  "pk": 11,
+  "pk": 5,
   "fields": {
-    "description": "adqwfqwf",
-    "status": "done",
+    "title": "Buy car",
+    "description": "I need to buy a new car",
+    "status": "new",
     "completion_at": "2023-02-25"
   }
 }
