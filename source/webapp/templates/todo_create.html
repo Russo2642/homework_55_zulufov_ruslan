@@ -46,40 +46,47 @@
         border-radius: 30px;
         border-color: rgb(188, 188, 188);
       }
+
     </style>
 </head>
 <body>
 <div class="container">
     <h1>Add ToDo</h1>
     <div class="form">
-      <form action="/todo/add/" method="post">
-        {% csrf_token %}
-        <div class="form_row">
-          <label for="description">
-            Description
-          </label>
-          <input type="text" name="description" id="description">
-        </div>
-        <div class="form_row">
-          <label for="status">
-            Status
-          </label>
-          <select name="status" id="status">
-            <option value="new">New</option>
-            <option value="process">In process</option>
-            <option value="done">Done</option>
-          </select>
-        </div>
-        <div class="form_row">
-          <label for="deadline">
-            Deadline
-          </label>
-          <input type="text" name="deadline" id="deadline" placeholder="use 'yyyy-mm-dd' format">
-        </div>
-        <div class="form_row">
-          <input style="display: block; margin: auto; background-color: transparent;" type="submit">
-        </div>
-      </form>
+        <form action="/todo/add/" method="post">
+            {% csrf_token %}
+            <div class="form_row">
+                <label for="title">
+                    Title
+                </label>
+                <input type="text" name="title" id="title">
+            </div>
+            <div class="form_row">
+                <label for="description">
+                    Description
+                </label>
+                <input type="text" name="description" id="description">
+            </div>
+            <div class="form_row">
+                <label for="status">
+                    Status
+                </label>
+                <select name="status" id="status">
+                    <option value="new">New</option>
+                    <option value="process">In process</option>
+                    <option value="done">Done</option>
+                </select>
+            </div>
+            <div class="form_row">
+                <label for="completion_at">
+                    Deadline
+                </label>
+                <input type="text" name="completion_at" id="completion_at" placeholder="use 'yyyy-mm-dd' format">
+            </div>
+            <div class="form_row">
+                <input style="display: block; margin: auto; background-color: transparent;" type="submit">
+            </div>
+        </form>
     </div>
 </div>
 </body>

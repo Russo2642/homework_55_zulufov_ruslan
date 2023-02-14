@@ -38,9 +38,9 @@
         <div class="row">
             <h1>ToDo List</h1>
             {% for td in todo %}
-            <h4>{{ td.description }}</h4>
-            <h4>{{ td.status }}</h4>
-            <h4>{{ td.completion_at }}</h4>
+            <h4>Title: {{ td.title }}</h4>
+            <h4>Status: {{ td.status }}</h4>
+            <h4>Deadline: {{ td.completion_at }}</h4>
             <p>
                 <a href="/todo/?pk={{ td.pk }}">More...</a>
             </p>

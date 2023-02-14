@@ -1,6 +1,5 @@
 from django.core.handlers.wsgi import WSGIRequest
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic.edit import UpdateView, DeleteView
 
@@ -13,6 +12,7 @@ class AddView(View):
 
     def post(self, request: WSGIRequest):
         todo_data = {
+            'title': request.POST.get('title'),
             'description': request.POST.get('description'),
             'status': request.POST.get('status'),
             'completion_at': request.POST.get('completion_at')
@@ -33,6 +33,7 @@ class ToDoUpdateView(UpdateView):
     model = ToDo
     template_name = 'update_todo.html'
     fields = [
+        "title",
         "description",
         "status",
         "completion_at"
