@@ -40,6 +40,7 @@
     <p>Description: {{ todo.description }}</p>
     <p>Status: {{ todo.status }}</p>
     <p>Deadline: {{ todo.completion_at }}</p>
+    <p>Detailed Description: {{ todo.detailed_description }}</p>
     <p><a href="{% url 'todo_update' todo.pk %}">Update</a></p>
     <form method="POST" action="{% url 'todo_delete' todo.pk %}">
     {% csrf_token %}<input type="submit" value="DELETE">

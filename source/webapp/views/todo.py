@@ -15,7 +15,8 @@ class AddView(View):
             'title': request.POST.get('title'),
             'description': request.POST.get('description'),
             'status': request.POST.get('status'),
-            'completion_at': request.POST.get('completion_at')
+            'completion_at': request.POST.get('completion_at'),
+            'detailed_description': request.POST.get('detailed_description')
         }
         todo = ToDo.objects.create(**todo_data)
         return redirect(f'/todo/?pk={todo.pk}')
@@ -36,7 +37,8 @@ class ToDoUpdateView(UpdateView):
         "title",
         "description",
         "status",
-        "completion_at"
+        "completion_at",
+        'detailed_description'
     ]
     success_url = "/"
 

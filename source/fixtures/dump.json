@@ -1,12 +1,13 @@
 [
 {
   "model": "webapp.todo",
-  "pk": 5,
+  "pk": 6,
   "fields": {
     "title": "Buy car",
     "description": "I need to buy a new car",
     "status": "new",
-    "completion_at": "2023-02-25"
+    "completion_at": "2023-02-25",
+    "detailed_description": "qwewqurqwurqhgwf7g\r\n\r\nu7ufwer78gf7yewufewgu7fgwe7gf7uewgf\r\n\r\n\r\ndgywfgdsgyfygdsfygdsygfysdgfygwe\r\n\r\n\r\nygegy"
   }
 }
 ]

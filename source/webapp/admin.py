@@ -5,10 +5,10 @@ from webapp.models import ToDo
 
 # Register your models here.
 class ToDoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'description', 'status', 'completion_at')
-    list_filter = ('id', 'title', 'description', 'status', 'completion_at')
+    list_display = ('id', 'title', 'description', 'status', 'completion_at', 'detailed_description')
+    list_filter = ('id', 'title', 'description', 'status', 'completion_at', 'detailed_description')
     search_fields = ('id', 'title')
-    fields = ('title', 'description', 'status', 'completion_at')
+    fields = ('title', 'description', 'status', 'completion_at', 'detailed_description')
     readonly_fields = ('id', 'completion_at')
 
 
