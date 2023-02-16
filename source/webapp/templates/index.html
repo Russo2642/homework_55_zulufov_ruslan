@@ -1,52 +1,20 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ToDo List</title>
-    <style>
-        * {
-            font-family: sans-serif;
-            color: rgb(31, 31, 31);
-        }
-        a {
-            text-decoration: none;
-        }
-        main {
-            max-width: 1000px;
-            width: 100%;
-            margin: 50px auto;
-        }
-        .row {
-            box-shadow: 0px 0px 10px 0px gray;
-            padding: 30px;
-            border-radius: 20px;
-            margin-top: 20px;
-        }
-        h1 {
-            font-size: 36px;
-        }
-        h4 {
-            font-size: 20px;
-        }
-    </style>
-</head>
-<body>
-<main>
-    <a href="/todo/add/">Add ToDo</a>
-    <div class="container">
-        <div class="row">
-            <h1>ToDo List</h1>
-            {% for td in todo %}
-            <h4>Title: {{ td.title }}</h4>
-            <h4>Status: {{ td.status }}</h4>
-            <h4>Deadline: {{ td.completion_at }}</h4>
-            <p>
-                <a href="/todo/?pk={{ td.pk }}">More...</a>
-            </p>
-            {% endfor %}
-        </div>
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block menu %}
+    <a href="{% url 'todo_add' %}">Add ToDo</a>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h1>ToDo List</h1>
+        {% for td in todo %}
+        <h4>Title: {{ td.title }}</h4>
+        <h4>Status: {{ td.status }}</h4>
+        <h4>Deadline: {{ td.completion_at }}</h4>
+        <p>
+            <a href="{% url 'todo_detail' td.pk %}">More...</a>
+        </p>
+        {% endfor %}
     </div>
-</main>
-</body>
-</html>
+</div>
+{% endblock %}

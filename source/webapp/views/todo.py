@@ -1,5 +1,6 @@
 from django.core.handlers.wsgi import WSGIRequest
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from django.views import View
 from django.views.generic.edit import UpdateView, DeleteView
 
@@ -19,15 +20,16 @@ class AddView(View):
             'detailed_description': request.POST.get('detailed_description')
         }
         todo = ToDo.objects.create(**todo_data)
-        return redirect(f'/todo/?pk={todo.pk}')
+        reverse_url = reverse('todo_detail', kwargs={'pk': todo.pk})
+        return redirect(reverse_url)
 
 
 class DetailView(View):
-    def get(self, request: WSGIRequest):
-        todo_pk = request.GET.get('pk')
-        todo = ToDo.objects.get(pk=todo_pk)
-        context = {'todo': todo}
-        return render(request, 'todo.html', context=context)
+    def get(self, request: WSGIRequest, pk):
+        todo = get_object_or_404(ToDo, pk=pk)
+        return render(request, 'todo.html', context={
+            'todo': todo
+        })
 
 
 class ToDoUpdateView(UpdateView):

@@ -7,9 +7,9 @@ from webapp.views.todo import ToDoUpdateView
 from webapp.views.todo import ToDoDeleteView
 
 urlpatterns = [
-    path('', IndexView.as_view()),
-    path('todo/add/', AddView.as_view()),
-    path('todo/', DetailView.as_view(), name='todo_detail'),
+    path('', IndexView.as_view(), name='index'),
+    path('todo/add/', AddView.as_view(), name='todo_add'),
+    path('todo/<int:pk>', DetailView.as_view(), name='todo_detail'),
     path('todo/<int:pk>/update', ToDoUpdateView.as_view(), name='todo_update'),
     path('todo/<int:pk>/delete', ToDoDeleteView.as_view(), name='todo_delete')
 ]

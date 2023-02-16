@@ -1,40 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ToDo</title>
-    <style>
-        * {
-            font-family: sans-serif;
-            color: black;
-        }
-        h1 {
-            font-size: 36px;
-        }
-        p {
-            font-size: 20px;
-        }
-        a {
-            color: gray;
-            text-decoration: none;
-        }
-        main {
-            max-width: 1000px;
-            margin: 50px auto;
-        }
-        input {
-            width: 100px;
-            height: 30px;
-            background: transparent;
-            box-shadow: 0px 0px 5px 0px gray;
-            border: none;
-            border-radius: 10px;
-            margin-left: 15px;
-        }
-    </style>
-</head>
-<body>
-<main>
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block menu %}
+    <a href="{% url 'todo_add' %}">Add ToDo</a>
+{% endblock %}
+{% block content %}
+
+<div class="container">
     <h1>ToDo</h1>
     <p>Title: {{ todo.title }}</p>
     <p>Description: {{ todo.description }}</p>
@@ -43,10 +14,9 @@
     <p>Detailed Description: {{ todo.detailed_description }}</p>
     <p><a href="{% url 'todo_update' todo.pk %}">Update</a></p>
     <form method="POST" action="{% url 'todo_delete' todo.pk %}">
-    {% csrf_token %}<input type="submit" value="DELETE">
+    {% csrf_token %}<button type="submit">Delete</button>
     </form>
     <br>
-    <p><a href="/">Home</a></p>
-</main>
-</body>
-</html>
+    <p><a href="{% url 'index' %}">Home</a></p>
+</div>
+{% endblock %}
