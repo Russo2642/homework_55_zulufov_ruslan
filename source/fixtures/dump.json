@@ -1,13 +1,107 @@
 [
 {
   "model": "webapp.todo",
-  "pk": 6,
+  "pk": 7,
   "fields": {
-    "title": "Buy car",
-    "description": "I need to buy a new car",
+    "title": "qweqw",
+    "description": "qweqwe",
+    "status": "In process",
+    "completion_at": "2023-02-28",
+    "detailed_description": "",
+    "is_deleted": true,
+    "created_at": "2023-02-24T06:51:40.280Z",
+    "updated_at": "2023-02-24T06:56:49.243Z",
+    "deleted_at": "2023-02-24T06:56:49.243Z"
+  }
+},
+{
+  "model": "webapp.todo",
+  "pk": 8,
+  "fields": {
+    "title": "qweewq",
+    "description": "bvnbvnbv",
+    "status": "New",
+    "completion_at": "2023-02-27",
+    "detailed_description": "",
+    "is_deleted": true,
+    "created_at": "2023-02-24T06:57:03.797Z",
+    "updated_at": "2023-02-24T08:21:36.504Z",
+    "deleted_at": "2023-02-24T08:21:36.504Z"
+  }
+},
+{
+  "model": "webapp.todo",
+  "pk": 9,
+  "fields": {
+    "title": "wtwetw",
+    "description": "wetwe",
+    "status": "In process",
+    "completion_at": "2023-03-02",
+    "detailed_description": "",
+    "is_deleted": true,
+    "created_at": "2023-02-24T07:16:09.184Z",
+    "updated_at": "2023-02-24T07:16:16.136Z",
+    "deleted_at": "2023-02-24T07:16:16.136Z"
+  }
+},
+{
+  "model": "webapp.todo",
+  "pk": 10,
+  "fields": {
+    "title": "12321321",
+    "description": "qwe",
+    "status": "New",
+    "completion_at": "2023-03-01",
+    "detailed_description": "",
+    "is_deleted": true,
+    "created_at": "2023-02-24T07:17:44.259Z",
+    "updated_at": "2023-02-24T07:17:51.703Z",
+    "deleted_at": "2023-02-24T07:17:51.703Z"
+  }
+},
+{
+  "model": "webapp.todo",
+  "pk": 11,
+  "fields": {
+    "title": "rtytye",
+    "description": "weewrwe",
+    "status": "in process",
+    "completion_at": "2023-04-05",
+    "detailed_description": "",
+    "is_deleted": true,
+    "created_at": "2023-02-24T07:58:03.410Z",
+    "updated_at": "2023-02-24T08:21:39.025Z",
+    "deleted_at": "2023-02-24T08:21:39.025Z"
+  }
+},
+{
+  "model": "webapp.todo",
+  "pk": 12,
+  "fields": {
+    "title": "куекуе",
+    "description": "цецу",
     "status": "new",
     "completion_at": "2023-02-25",
-    "detailed_description": "qwewqurqwurqhgwf7g\r\n\r\nu7ufwer78gf7yewufewgu7fgwe7gf7uewgf\r\n\r\n\r\ndgywfgdsgyfygdsfygdsygfysdgfygwe\r\n\r\n\r\nygegy"
+    "detailed_description": "вавапв",
+    "is_deleted": true,
+    "created_at": "2023-02-24T08:09:05.295Z",
+    "updated_at": "2023-02-24T08:21:41.295Z",
+    "deleted_at": "2023-02-24T08:21:41.295Z"
+  }
+},
+{
+  "model": "webapp.todo",
+  "pk": 13,
+  "fields": {
+    "title": "Title",
+    "description": "Description",
+    "status": "new",
+    "completion_at": "10.03.2023",
+    "detailed_description": "Title:Desc:10-03-2023",
+    "is_deleted": false,
+    "created_at": "2023-02-24T08:23:01.329Z",
+    "updated_at": "2023-02-24T08:23:01.329Z",
+    "deleted_at": null
   }
 }
 ]
