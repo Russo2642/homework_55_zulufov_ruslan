@@ -5,45 +5,8 @@
 <div class="container">
     <h1>Add ToDo</h1>
     <div class="form">
-        <form action="/todo/add/" method="post">
-            {% csrf_token %}
-            <div class="form_row">
-                <label for="title">
-                    Title
-                </label>
-                <input class="input_add" type="text" name="title" id="title">
-            </div>
-            <div class="form_row">
-                <label for="description">
-                    Description
-                </label>
-                <input class="input_add" type="text" name="description" id="description">
-            </div>
-            <div class="form_row">
-                <label for="status">
-                    Status
-                </label>
-                <select name="status" id="status">
-                    <option value="new">New</option>
-                    <option value="process">In process</option>
-                    <option value="done">Done</option>
-                </select>
-            </div>
-            <div class="form_row">
-                <label for="completion_at">
-                    Deadline
-                </label>
-                <input class="input_add" type="text" name="completion_at" id="completion_at" placeholder="use 'yyyy-mm-dd' format">
-            </div>
-            <div class="form_row">
-                <label for="detailed_description">
-                    Detailed Description
-                </label>
-                <input class="detailed_description" type="textarea" name="detailed_description" id="detailed_description">
-            </div>
-            <div class="form_row">
-                <input style="display: block; margin: auto; background-color: transparent;" type="submit">
-            </div>
+        <form action="{% url 'todo_add' %}" method="post">
+            {% include 'partial/todo_form.html' with button_text='Создать' %}
         </form>
     </div>
 </div>

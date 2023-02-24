@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}ToDo confirm delete{% endblock %}
+{% block menu %}
+{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Вы точно хотите удалить список ?</h1>
+    <p>Title: {{ todo.title }}</p>
+    <p>Description: {{ todo.description }}</p>
+    <p>Status: {{ todo.status }}</p>
+    <form action="{% url 'confirm_delete' article.pk %}" method="post">
+        {% csrf_token %}
+        <p><input type="submit" value="Удалить"></p>
+        <p><a href="{% url 'index' %}">Отменить</a></p>
+    </form>
+</div>
+{% endblock %}

@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Update ToDo</title>
-</head>
-<body>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save">
-</form>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}ToDo Create{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h1>Add ToDo</h1>
+    <div class="form">
+        <form action="{% url 'todo_update' tood.pk %}" method="post">
+            {% include 'partial/todo_form.html' with button_text='Редактировать' %}
+        </form>
+    </div>
+</div>
+{% endblock %}

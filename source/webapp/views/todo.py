@@ -6,22 +6,22 @@ from django.views.generic.edit import UpdateView, DeleteView
 
 from webapp.models import ToDo
 
+from webapp.forms import ToDoForm
+
 
 class AddView(View):
     def get(self, request: WSGIRequest):
-        return render(request, 'todo_create.html')
+        form = ToDoForm()
+        return render(request, 'todo_create.html', context={'form': form})
 
     def post(self, request: WSGIRequest):
-        todo_data = {
-            'title': request.POST.get('title'),
-            'description': request.POST.get('description'),
-            'status': request.POST.get('status'),
-            'completion_at': request.POST.get('completion_at'),
-            'detailed_description': request.POST.get('detailed_description')
-        }
-        todo = ToDo.objects.create(**todo_data)
-        reverse_url = reverse('todo_detail', kwargs={'pk': todo.pk})
-        return redirect(reverse_url)
+        form = ToDoForm(data=request.POST)
+        if not form.is_valid():
+            return render(request, 'todo_create.html', context={'form': form})
+        else:
+            todo = ToDo.objects.create(**form.cleaned_data)
+            reverse_url = reverse('todo_detail', kwargs={'pk': todo.pk})
+            return redirect(reverse_url)
 
 
 class DetailView(View):
@@ -32,20 +32,27 @@ class DetailView(View):
         })
 
 
-class ToDoUpdateView(UpdateView):
-    model = ToDo
-    template_name = 'update_todo.html'
-    fields = [
-        "title",
-        "description",
-        "status",
-        "completion_at",
-        'detailed_description'
-    ]
-    success_url = "/"
+class ToDoUpdateView(View):
+    def get(self, request, pk):
+        todo = get_object_or_404(ToDo, pk=pk)
+        return render(request, 'update_todo.html', context={'todo': todo})
+
+    def post(self, request, pk):
+        todo = get_object_or_404(ToDo, pk=pk)
+        todo.title = request.POST.get('title')
+        todo.author = request.POST.get('author')
+        todo.text = request.POST.get('text')
+        todo.save()
+        return redirect('article_detail', pk=todo.pk)
 
 
-class ToDoDeleteView(DeleteView):
-    model = ToDo
-    success_url = '/'
-    template_name = "todo.html"
+class ToDoDeleteView(View):
+    def post(self, request, pk):
+        todo = get_object_or_404(ToDo, pk=pk)
+        return render(request, 'todo_confirm_delete.html', context={'todo': todo})
+
+
+def confirm_delete(request, pk):
+    todo = get_object_or_404(ToDo, pk=pk)
+    todo.delete()
+    return redirect('index')
