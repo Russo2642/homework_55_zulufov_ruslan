@@ -1,13 +1,30 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
+from webapp.models import ToDo
 
-class ToDoForm(forms.Form):
-    title = forms.CharField(max_length=100, required=True, label='Заголовок')
-    text = forms.CharField(max_length=3000, required=True, label='Текст')
-    status = forms.CharField(max_length=200, required=True, label='Статус')
-    completion_at = forms.DateField(required=True, label='Дедлайн')
-    detailed_description = forms.CharField(max_length=3000, required=False, label='Детальное описание')
+STATUS_CHOICES = [
+    ('new', 'New'),
+    ('in process', 'In Process'),
+    ('done', 'Done')
+]
+
+
+class ToDoForm(forms.ModelForm):
+    class Meta:
+        model = ToDo
+        fields = ('title', 'description', 'status', 'completion_at', 'detailed_description')
+        labels = {
+            'title': 'Заголовок',
+            'description': 'Описание',
+            'status': 'Статус',
+            'completion_at': 'Дедлайн',
+            'detailed_description': 'Подробное описание'
+        }
+        widgets = {
+            'status': forms.Select(choices=STATUS_CHOICES),
+            'completion_at': forms.SelectDateWidget(empty_label="Nothing")
+        }
 
     def clean_title(self):
         title = self.cleaned_data.get('title')

@@ -1,11 +1,7 @@
 from django.urls import path
 from webapp.views.base import IndexView
-from webapp.views.todo import AddView
-from webapp.views.todo import DetailView
-from webapp.views.todo import ToDoUpdateView
-from webapp.views.todo import ToDoDeleteView
+from webapp.views.todo import AddView, DetailView, ToDoUpdateView, ToDoDeleteView, confirm_delete
 
-from webapp.views.todo import confirm_delete
 
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),

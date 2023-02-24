@@ -7,7 +7,7 @@ from webapp.models import ToDo
 
 class IndexView(View):
     def get(self, request: WSGIRequest):
-        todo = ToDo.objects.all()
+        todo = ToDo.objects.exclude(is_deleted=True)
         context = {
             'todo': todo
         }

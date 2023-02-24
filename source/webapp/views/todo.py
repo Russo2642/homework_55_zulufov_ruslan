@@ -1,9 +1,6 @@
 from django.core.handlers.wsgi import WSGIRequest
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
 from django.views import View
-from django.views.generic.edit import UpdateView, DeleteView
-
 from webapp.models import ToDo
 
 from webapp.forms import ToDoForm
@@ -19,9 +16,8 @@ class AddView(View):
         if not form.is_valid():
             return render(request, 'todo_create.html', context={'form': form})
         else:
-            todo = ToDo.objects.create(**form.cleaned_data)
-            reverse_url = reverse('todo_detail', kwargs={'pk': todo.pk})
-            return redirect(reverse_url)
+            ToDo.objects.create(**form.cleaned_data)
+            return redirect('index')
 
 
 class DetailView(View):
@@ -35,19 +31,20 @@ class DetailView(View):
 class ToDoUpdateView(View):
     def get(self, request, pk):
         todo = get_object_or_404(ToDo, pk=pk)
-        return render(request, 'update_todo.html', context={'todo': todo})
+        form = ToDoForm(instance=todo)
+        return render(request, 'update_todo.html', context={'form': form, 'todo': todo})
 
     def post(self, request, pk):
         todo = get_object_or_404(ToDo, pk=pk)
-        todo.title = request.POST.get('title')
-        todo.author = request.POST.get('author')
-        todo.text = request.POST.get('text')
-        todo.save()
-        return redirect('article_detail', pk=todo.pk)
+        form = ToDoForm(request.POST, instance=todo)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+        return render(request, 'update_todo.html', context={'form': form})
 
 
 class ToDoDeleteView(View):
-    def post(self, request, pk):
+    def get(self, request, pk):
         todo = get_object_or_404(ToDo, pk=pk)
         return render(request, 'todo_confirm_delete.html', context={'todo': todo})
 
